@@ -16,6 +16,9 @@ function NavBar(): JSX.Element {
           <NavLink className="nav-link" to="/stat">
             Statistics
           </NavLink>
+          <NavLink className="nav-link" to="/count">
+            Counter
+          </NavLink>
         </Nav>
       </Container>
     </Navbar>
