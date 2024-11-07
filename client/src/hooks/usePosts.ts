@@ -15,7 +15,7 @@ export default function usePosts(): UsePostsTypes {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    void dispatch(getPostsThunk);
+    void dispatch(getPostsThunk());
   }, []);
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
