@@ -6,6 +6,7 @@ import usePosts from '../../hooks/usePosts';
 
 function PostPage(): JSX.Element {
   const { posts } = usePosts();
+  console.log(posts);
 
   return (
     <>

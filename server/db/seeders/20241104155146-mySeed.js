@@ -1,25 +1,57 @@
 'use strict';
-
-const { Post } = require('../models');
+const bcrypt = require('bcrypt');
+const { Post, User } = require('../models');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    await User.bulkCreate([
+      {
+        username: 'Alex',
+        email: '111@111',
+        password: bcrypt.hashSync('111', 10),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: 'Bob',
+        email: '222@222',
+        password: bcrypt.hashSync('222', 10),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: 'Carl',
+        email: '333@333',
+        password: bcrypt.hashSync('333', 10),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
     await Post.bulkCreate([
       {
-        title: 'Осень в лесу',
+        title: 'Neo 3000',
         desc: 'Золотая палитра листьев, тихий шелест ветра, запах сырой земли и свежескошенной травы.',
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPYASTegDVpY7bSTcGoIoF-gUJoXGzYdpu9A&s',
+        url: 'https://sun9-5.userapi.com/impg/0Hb5eX-VHnNbPj5QPEI2kdFJUGLfU9ekZJUSoQ/LsYwZA-BRgI.jpg?size=403x604&quality=95&sign=f5acfb7a9043c52f6dfa6eee41bab325&type=album',
+        userId: null,
       },
       {
-        title: 'Осень в парке',
+        title: 'ChikenKiller',
         desc: 'Красочные пейзажи парка, уютные скамейки, дети, играющие в опавших листьях, и вечера, наполненные ароматом свежесваренного чая.',
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzYQ7jr00dSLrZgICO5-o4APJPU498tYw4bw&s',
+        url: 'https://sun9-5.userapi.com/impg/0Hb5eX-VHnNbPj5QPEI2kdFJUGLfU9ekZJUSoQ/LsYwZA-BRgI.jpg?size=403x604&quality=95&sign=f5acfb7a9043c52f6dfa6eee41bab325&type=album',
+        userId: null,
       },
       {
-        title: 'Осень на даче',
+        title: 'Dude',
         desc: 'Подготовка к зиме, сбор урожая, закаты, окрашивающие небо в теплые тона, и уютные вечера у камина.',
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2yor6JdSPf0TF8yO9rRB_ILd3r1ruid7gcg&s',
+        url: 'https://sun9-5.userapi.com/impg/0Hb5eX-VHnNbPj5QPEI2kdFJUGLfU9ekZJUSoQ/LsYwZA-BRgI.jpg?size=403x604&quality=95&sign=f5acfb7a9043c52f6dfa6eee41bab325&type=album',
+        userId: null,
+      },
+      {
+        title: 'Bob Marley',
+        desc: 'Подготовка к зиме, сбор урожая, закаты, окрашивающие небо в теплые тона, и уютные вечера у камина.',
+        url: 'https://sun9-5.userapi.com/impg/0Hb5eX-VHnNbPj5QPEI2kdFJUGLfU9ekZJUSoQ/LsYwZA-BRgI.jpg?size=403x604&quality=95&sign=f5acfb7a9043c52f6dfa6eee41bab325&type=album',
+        userId: null,
       },
     ]);
   },

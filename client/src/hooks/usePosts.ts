@@ -22,6 +22,7 @@ export default function usePosts(): UsePostsTypes {
     e.preventDefault();
     const dataForm = Object.fromEntries(new FormData(e.currentTarget)) as PostTypeForm;
     void dispatch(addPostThunk(dataForm));
+    e.currentTarget.reset();
   };
 
   const deleteHandler = (id: PostTypeDb['id']) => {

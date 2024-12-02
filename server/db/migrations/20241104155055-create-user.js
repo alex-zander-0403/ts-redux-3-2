@@ -1,33 +1,27 @@
 'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Posts', {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
+      username: {
         type: Sequelize.STRING,
         unique: true, // уникальность вкл
         allowNull: false, // не может быть пустым
       },
-      desc: {
-        type: Sequelize.TEXT,
+      email: {
+        type: Sequelize.STRING,
+        unique: true, // уникальность вкл
+        allowNull: false, // не может быть пустым
       },
-      url: {
-        type: Sequelize.TEXT,
-      },
-      userId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Users', // к какой таблице привязка
-          key: 'id', // к какому ключу
-        },
-        onDelete: 'CASCADE', // 'SETNULL'
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false, // не может быть пустым
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Posts');
+    await queryInterface.dropTable('Users');
   },
 };

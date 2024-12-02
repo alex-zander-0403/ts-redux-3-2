@@ -5,6 +5,7 @@ const PostSchema = z.object({
   title: z.string(),
   desc: z.string(),
   url: z.string(),
+  userId: z.number().nullable(),
 });
 
 export default PostSchema; // ?

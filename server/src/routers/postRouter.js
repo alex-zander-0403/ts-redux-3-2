@@ -19,7 +19,7 @@ postRouter
       if (!title || !desc || !url) {
         return res.status(400).json({ message: 'некорректные данные' });
       }
-      const newPost = await Post.create({ title, desc, url });
+      const newPost = await Post.create({ title, desc, url, userId: null });
       res.send(newPost);
     } catch (error) {
       console.log(error);
